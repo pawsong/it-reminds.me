@@ -12,7 +12,7 @@ angular.module('windowApp')
     window.paper = null;
 
     return {
-      template: '<canvas class="canvas"></canvas>',
+      template: '<canvas class="fit-to-parent"></canvas>',
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
@@ -23,7 +23,7 @@ angular.module('windowApp')
           throw new Error('\'script\' attribute must be given.');
         }
 
-        $http.get('/papers/' + attrs.script).then(function (res) {
+        $http.get(attrs.script).then(function (res) {
           var paperScp = res.data;
           ps.setup(canvas);
 

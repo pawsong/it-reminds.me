@@ -15,23 +15,40 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($locationProvider, $routeProvider) {
+  .config(function (
+    $locationProvider,
+    $stateProvider,
+    $urlRouterProvider
+    ) {
     $locationProvider
       .hashPrefix('!')
       .html5Mode(false);
 
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('root', {
+        abstract: true,
+        url: '',
+        template: '<div class="fit-to-parent" data-ui-view=""></div>',
+        resolve: {
+          articles: ['$http', function ($http) {
+            return $http.get('/data/articles.json').then(function (res) {
+              return res.data;
+            });
+          }]
+        }
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('root.home', {
+        url: '/',
+        controller: 'HomeCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('root.article', {
+        url: '/articles/:name',
+        templateUrl: 'views/article.html',
+        controller: 'ArticleCtrl'
       });
-  });
+  }).run(function ($rootScope, $state) {$rootScope.$state = $state;});

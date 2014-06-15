@@ -57,7 +57,8 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.app %>/papers/{,*/}*.js'
+          '<%= yeoman.app %>/papers/{,*/}*.js',
+          '<%= yeoman.app %>/data/{,*/}*.json'
         ]
       }
     },
@@ -330,7 +331,8 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/*',
-            'papers/{,*/}*.js'
+            'papers/{,*/}*.js',
+            'data/{,*/}*.json'
           ]
         }, {
           expand: true,
