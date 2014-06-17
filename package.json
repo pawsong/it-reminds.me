@@ -1,7 +1,13 @@
 {
   "name": "window",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "connect-modrewrite": "^0.7.6",
+    "http-proxy": "^1.1.4",
+    "prerender-node": "^1.0.1",
+    "express": "^4.4.3",
+    "morgan": "^1.1.1"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
@@ -26,7 +32,8 @@
     "grunt-wiredep": "^1.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.3.1"
+    "time-grunt": "^0.3.1",
+    "grunt-karma": "^0.8.3"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -25,7 +25,7 @@ angular
     ) {
     $locationProvider
       .hashPrefix('!')
-      .html5Mode(false);
+      .html5Mode(true);
 
     $urlRouterProvider.otherwise('/');
 
@@ -47,7 +47,7 @@ angular
         controller: 'HomeCtrl'
       })
       .state('root.article', {
-        url: '/articles/:name',
+        url: '/of/:name',
         templateUrl: 'views/article.html',
         controller: 'ArticleCtrl'
       });
