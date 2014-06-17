@@ -13,7 +13,10 @@ var pageUrl = process.env.IT_REMINDS_URL;
 var prerenderMiddleware = prerender.set('prerenderServiceUrl', 'http://localhost:' + process.env.PRERENDER_PORT);
 var rewriteMiddleware = modRewrite(['!(\\..+)$ / [L]']);
 var proxy = httpProxy.createProxyServer({
-  target: 'http://' + pageUrl
+  target: {
+    host: pageUrl,
+    port: 80
+  }
 });
 
 if (process.env.NODE_ENV === 'development') {
