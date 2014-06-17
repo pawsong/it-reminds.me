@@ -18,6 +18,8 @@ var proxy = httpProxy.createProxyServer({
 
 if (process.env.NODE_ENV === 'development') {
   app.use(logger('dev'));
+} else {
+  app.use(logger('default'));
 }
 app.use(prerenderMiddleware);
 app.use(rewriteMiddleware);
